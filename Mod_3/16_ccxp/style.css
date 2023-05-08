@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    font-family: 'Verdana';   
+}
+
+header {
+    background: #FFD900;
+}
+#cxxpHeader {
+    padding: 20px 0px 10px 50px;
+    height: 60px;    
+}
+
+main {
+    margin-top: 20px;
+    text-align: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 50vw;
+    justify-content: space-around;
+}
+#info {
+    background: #514988;
+}
+#titulo {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 85px;
+    color: #F3C61F;
+}
+#dataEvento {
+    font-weight: 550;
+    font-size: 30px;
+    line-height: 85px;
+    color: #FFFFFF;
+}
+main p {
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 35px;
+    color: #FFFFFF;
+}
+#time {
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 85px;
+    color: #514988;
+    display: grid;
+    grid-auto-flow: column;
+}
+#siglas {
+    display: grid;
+    grid-auto-flow: column;
+}
+#textCcxp{
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    color: #E33881;
+}
+video {
+    width: 830px;
+}
+#ingre2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 33px;
+    color: #F3C61F;
+}
+#ingressos {
+    text-align: center;
+    align-items: center;
+    margin-top: 30px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    
+}
+
+button {
+    background: #514988;
+    border-radius: 20px;
+    width: 596px;
+    height: 148px;
+    color: #FFFFFF;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 51px;
+    font-weight: bold;
+    transition: all ease 0.6s;
+}
+
+button:hover {
+    background-color: #897ecf;
+    color:aliceblue;
+    box-shadow: 5px 5px 5px 5px grey;
+}
+
+.card-highlight {
+    box-shadow: 10px 10px 10px 10px grey;
+} 
+
+.card-select {
+    border:  5px solid green;
+}
