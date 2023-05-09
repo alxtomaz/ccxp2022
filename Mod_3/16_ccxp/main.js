@@ -5,15 +5,6 @@ function addRedBorder (id) {
     element = document.querySelector("#" + id)
     element.style.border = "10px solid red"
 }
-
-function buttonHover () {
-    button = document.getElementById("oi")
-    button.style.background = "red"
-    button.style.color = "black"
-    button.innerHTML = "Adicionado"
-    button.style.border = "10px solid blue"
-}
-
 // objetivo dessa function é fazer o item selector, aparecer o boxshdow, destacando de uma melhor forma onde o cursor está 
 function highLightCard (selector) {
     var element = document.querySelector(selector);
@@ -80,6 +71,12 @@ function selectCard(selector) {
 showSelectCards = () => {
     if (ingreesos.length > 0) alert("ingressos selecionados:" + ingreesos); 
     console.log(ingreesos)
+
+    button = document.getElementById("oi")
+    button.style.background = "red"
+    button.style.color = "black"
+    button.innerHTML = "Adicionado"
+    button.style.border = "10px solid blue"
 }
 
 // checkKeyboardCode()1

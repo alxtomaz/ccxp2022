@@ -92,9 +92,8 @@ button {
 }
 
 button:hover {
-    background-color: #897ecf;
-    color:aliceblue;
-    box-shadow: 5px 5px 5px 5px grey;
+    background-color: yellow;
+    color: blueviolet;
 }
 
 .card-highlight {
