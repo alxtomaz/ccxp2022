@@ -7,7 +7,7 @@ class Atendimento {
 
     adicionar() {
        let atendimento = this.lerDados();
-    //    console.log(atendimento);
+    //    console.log(atendimento)bgb;
         this.Salvar(atendimento);
         this.Listar(this.arrayAtendimentos);
         this.cancelar()
