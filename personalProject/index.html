@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+   <header class=""></header>
+        <!-- cadastro de cobrança  -->
+        <main>
+            <!-- identificação do cliente -->
+            <div class="border coluna" >
+                <div>
+                    <div class="space">
+                        <label>ID CLIENTE:</label>
+                        <input type="text" placeholder="idcliente" id="idcliente">
+                    </div>
+                    <div class="space">
+                        <label>NOME:</label>
+                        <input type="text" placeholder="nomeCliente" id="nome">
+                    </div>                   
+                </div>     
+                <div >
+                    <div class="space"> 
+                        <label>ID ATEND:</label>
+                        <input type="id" placeholder="idAtend" id="idatend">
+                    </div>
+                    <div class="space">
+                        <label>DATA:</label>
+                        <input type="date" placeholder="dataAtend" id="dataAtend"> 
+                    </div>                    
+                </div>                          
+            </div>
+            <!-- informações sobre divida / negociação -->
+            <div class="border coluna" id="">
+                    <div>
+                        <div class="space">
+                            <label>STATUS:</label>
+                            <input type="text" placeholder="status" id="status">
+                        </div>
+                        <div class="space">
+                            <label>PAGAM.:</label>
+                            <input type="text" placeholder="pagamento" id="pagamento"> 
+                        </div>                        
+                    </div>   
+                    <div>
+                        <div class="space">
+                            <label>VALOR REAL:</label>                
+                            <input type="number" placeholder="valorReal" id="valorReal">
+                        </div>
+                        <div class="space">
+                            <label>VALOR REN.:</label> 
+                            <input type="number" placeholder="ValorRen" id="valorRen">
+                        </div>           
+                    </div> 
+            </div>
+            <!-- informações obs -->
+            <div class="border coluna">
+                <div  class="">
+                    <div class="space">
+                        <label>VENCIMENTO:</label>
+                        <input type="date" placeholder="dataAtend" id="dateVenc">
+                    </div>
+                    <div class="space" id="oi">
+                        <button onclick="atendimento.adicionar()">Adicionar</button>
+                        <button onclick="atendimento.cancelar()">Deletar</button>
+                        <button>Limpar</button>
+                        <!-- <p>DESCONTO:</p>
+                        <input type="number" placeholder="valorDesc" id="valorDesc"> -->
+                    </div>                    
+                </div>
+                <textarea rows="3" placeholder="OBSERVAÇÕES" id="obs"></textarea>
+            </div>
+        </main>
+        <div id="tabela">
+            <table border="1">
+
+                <thead>
+                    <th> ID </th>
+                    <th> ID CLIENTE </th>
+                    <th style="width: 200PX;"> NOME </th>
+                    <th> ID ATEND </th>
+                    <th> DATA ATEND </th>
+                    <th> STATUS </th>
+                    <TH> PAGAMENTO </TH>
+                    <th> VALOR REAL </th>
+                    <th> VALOR REN </th>
+                    <th> DESCONTO </th>
+                    <th> VENCIMENTO </th>
+                    <!-- <th style="width: 10px;"> OBS </th> em processo ainda -->
+                    <th style="width: 200PX;"> AÇÕES </th>
+                </thead>
+                <tbody id="tbody">
+    
+                </tbody>
+            </table>
+        </div>      
+        <script src="script.js"></script>
+  </body>
+</html>
