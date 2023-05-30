@@ -3,16 +3,23 @@ class Atendimento {
     constructor() {
         this.id = 1;
         this.arrayAtendimentos = [];
+        this.editId = null;
     }
-
+    // função que ativa todas as outras funcoes 
     adicionar() {
        let atendimento = this.lerDados();
-    //    console.log(atendimento)bgb;
+
+       if(this.editId == null) {
         this.Salvar(atendimento);
+        }else { this.atualizar(this.editId, atendimento);
+        }
+        
         this.Listar(this.arrayAtendimentos);
+        this.Total(this.arrayAtendimentos);
         this.cancelar()
     }
 
+    // função que faz a leitura dos valores ditados nos imput
     lerDados() {
         let atendimento = {}
 
@@ -32,24 +39,82 @@ class Atendimento {
         return atendimento;
     }
 
+    //função que evia os dados para o array
     Salvar(atendimento) {
         this.arrayAtendimentos.push(atendimento);
         this.id++;
     }
-    cancelar() {
-
-        document.getElementById('idcliente').value = ""
-        document.getElementById('nome').value = ""
-        document.getElementById('idatend').value = ""
-        document.getElementById('dataAtend').value = ""
-        document.getElementById('status').value = ""
-        document.getElementById('pagamento').value = ""
-        document.getElementById('valorReal').value = ""
-        document.getElementById('valorRen').value = ""
-        document.getElementById('dateVenc').value = ""
-        document.getElementById('obs').value = ""
+    atualizar(id, atendimento) {
+        for (let i = 0; i < this.arrayAtendimentos.length; i++) {
+            if (this.arrayAtendimentos[i].id == id) {
+                this.arrayAtendimentos[i].idCliente = atendimento.idCliente
+                this.arrayAtendimentos[i].nomecliente = atendimento.nomecliente
+                this.arrayAtendimentos[i].idAtendimento = atendimento.idAtendimento
+                this.arrayAtendimentos[i].dataAtendimento = atendimento.dataAtendimento
+                this.arrayAtendimentos[i].statusAtendimento = atendimento.statusAtendimento
+                this.arrayAtendimentos[i].pagamentoCliente = atendimento.pagamentoCliente
+                this.arrayAtendimentos[i].valorReal = atendimento.valorReal
+                this.arrayAtendimentos[i].valorRen = atendimento.valorRen
+                this.arrayAtendimentos[i].valorDesconto = atendimento.valorDesconto
+                this.arrayAtendimentos[i].dataVencimento = atendimento.dataVencimento
+                this.arrayAtendimentos[i].observacoes = atendimento.observacoes                
+            }
+        }
     }
 
+    Total(arrayAtendimentos) {
+        let totalReal = 0;
+        let totalRen = 0;
+        let totalDesconto = 0;
+        for (let i = 0; i < arrayAtendimentos.length; i++) {
+
+            let valor1 = parseFloat(arrayAtendimentos[i]["valorReal"]);
+            let valor2 = parseFloat(arrayAtendimentos[i]["valorRen"]);
+            let valor3 = parseFloat(arrayAtendimentos[i]["valorDesconto"]);
+
+            totalReal += valor1
+            totalRen += valor2
+            totalDesconto += valor3
+
+          }   
+          document.getElementById('total1').innerHTML = `${"R$ " + totalReal}`;
+          document.getElementById('total2').innerHTML = `${"R$ " + totalRen}`;
+          document.getElementById('total3').innerHTML = `${"R$ " + totalDesconto}`;   
+        }
+    // cancelar itens escritos na pagina e quando adicionar um objeto
+    cancelar() {
+
+        document.getElementById('idcliente').value = "";
+        document.getElementById('nome').value = "";
+        document.getElementById('idatend').value = "";
+        document.getElementById('dataAtend').value = "";
+        document.getElementById('status').value = "";
+        document.getElementById('pagamento').value = "";
+        document.getElementById('valorReal').value = "";
+        document.getElementById('valorRen').value = "";
+        document.getElementById('dateVenc').value = "";
+        document.getElementById('obs').value = "";
+
+        document.getElementById('btn1').innerText = "Adicionar";
+        this.editId = null;
+    }
+    // Função deletar objetos de array de array
+    deletar(id) {
+        if(confirm('Deseja realmente deletar este atendimento ' + id)) {
+            let tbody = document.getElementById('tbody');
+
+            for (let i = 0; i < this.arrayAtendimentos.length; i++) {
+                if(this.arrayAtendimentos[i].id == id) {
+                    this.arrayAtendimentos.splice(i,1);
+                    tbody.deleteRow(i);
+                    console.log(this.arrayAtendimentos)
+                    this.Total(this.arrayAtendimentos);
+                }            
+            }
+        } 
+    }
+
+    // Função listar produtos na tabela 
     Listar() {
 
         let tbody = document.getElementById('tbody');
@@ -62,7 +127,7 @@ class Atendimento {
             // inserire celular no tbody (coluna)
             // td - coluna 
             // tr - linha
-            let td_id = tr.insertCell();
+            let td_id = tr.insertCell(); 
             let td_idCliente = tr.insertCell();
             let td_nome = tr.insertCell();
             let td_idAtend = tr.insertCell();
@@ -88,7 +153,7 @@ class Atendimento {
             td_valorRen.innerText = this.arrayAtendimentos[i].valorRen;
             td_ValorDesconto.innerText = this.arrayAtendimentos[i].valorDesconto;
             td_dataVencimento.innerText = this.arrayAtendimentos[i].dataVencimento;
-            // td_obs.innerText = this.arrayAtendimentos[i].observacoes; em processo ainda!!!!!!
+            // td_obs.innerText = this.arrayAtendimentos[i].observacoes; em processo ainda!!!!!!!
 
             td_id.classList.add('center');
 
@@ -96,20 +161,40 @@ class Atendimento {
             let imgEdit = document.createElement('img');
             //declaram o caminho pra achar a imagem
             imgEdit.src ='img/edit.svg';
+            imgEdit.setAttribute("onclick", "atendimento.editacao("+ JSON.stringify(this.arrayAtendimentos[i]) +")");
             //inserindo na celula ações
             td_acoes.appendChild(imgEdit);
-
             // criando o elemento imagem 
             let imgDelete = document.createElement('img');
             //declaram o caminho pra achar a imagem
             imgDelete.src = 'img/lixeira.svg'
+            imgDelete.setAttribute("onclick", "atendimento.deletar("+ this.arrayAtendimentos[i].id +")");
             //inserindo na celula ações
             td_acoes.appendChild(imgDelete);
-
+            
+            // console.log(this.arrayAtendimentos)
+            
         }
 
     }
+    editacao(dados) {
 
+        this.editId = dados.id;
+
+        document.getElementById('idcliente').value = dados.idCliente
+        document.getElementById('nome').value = dados.nomecliente
+        document.getAnimations('idatend').value = dados.idAtendimento
+        document.getElementById('dataAtend').value = dados.dataAtendimento
+        document.getElementById('status').value = dados.statusAtendimento
+        document.getElementById('pagamento').value = dados.pagamentoCliente
+        document.getElementById('valorReal').value = dados.valorReal
+        document.getElementById('valorRen').value = dados.valorRen
+        document.getElementById('dateVenc').value = dados.dataVencimento
+        document.getElementById('obs').value = dados.observacoes
+
+        document.getElementById('btn1').innerText = "Atualizar"
+
+    }
 }
 
 const atendimento = new Atendimento();

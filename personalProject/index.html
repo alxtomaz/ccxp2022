@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-   <header class=""></header>
+   <header>
+    <nav>
+        <button>Cadastros</button>
+        <button>Atendimentos</button>
+        <button>Relatorios</button>
+    </nav>
+   </header>
         <!-- cadastro de cobrança  -->
         <main>
             <!-- identificação do cliente -->
@@ -48,11 +54,11 @@
                     <div>
                         <div class="space">
                             <label>VALOR REAL:</label>                
-                            <input type="number" placeholder="valorReal" id="valorReal">
+                            <input type="number" placeholder="valorReal" id="valorReal" required>
                         </div>
                         <div class="space">
                             <label>VALOR REN.:</label> 
-                            <input type="number" placeholder="ValorRen" id="valorRen">
+                            <input type="number" placeholder="ValorRen" id="valorRen" required>
                         </div>           
                     </div> 
             </div>
@@ -64,11 +70,11 @@
                         <input type="date" placeholder="dataAtend" id="dateVenc">
                     </div>
                     <div class="space" id="oi">
-                        <button onclick="atendimento.adicionar()">Adicionar</button>
+                        <button onclick="atendimento.adicionar()" id="btn1">Adicionar</button>
                         <button onclick="atendimento.cancelar()">Deletar</button>
                         <button>Limpar</button>
                         <!-- <p>DESCONTO:</p>
-                        <input type="number" placeholder="valorDesc" id="valorDesc"> -->
+                        <input type="number" placeholder="valorDesc" id="valorDesc "> -->
                     </div>                    
                 </div>
                 <textarea rows="3" placeholder="OBSERVAÇÕES" id="obs"></textarea>
@@ -84,7 +90,7 @@
                     <th> ID ATEND </th>
                     <th> DATA ATEND </th>
                     <th> STATUS </th>
-                    <TH> PAGAMENTO </TH>
+                    <th> PAGAMENTO </th>
                     <th> VALOR REAL </th>
                     <th> VALOR REN </th>
                     <th> DESCONTO </th>
@@ -93,9 +99,27 @@
                     <th style="width: 200PX;"> AÇÕES </th>
                 </thead>
                 <tbody id="tbody">
-    
+                    
+                </tbody>
+
+            </table>
+            <table id="tabela1" border="1">
+                <thead>
+                    <th>TOTAL REAL</th>
+                    <th>TOTAL RENEGOCIADO</th>
+                    <th>DESCONTO TOTAL</th>
+                </thead>
+                <tbody id="tbody1">
+                    <tr>
+                        <td id="total1">valor</td>
+                        <td id="total2"> valor </td>
+                        <td id="total3"> valor </td>
+                    </tr>
                 </tbody>
             </table>
+            <div id="janela" style="display: none;">
+                <!-- Conteúdo da janela -->
+            </div>             
         </div>      
         <script src="script.js"></script>
   </body>

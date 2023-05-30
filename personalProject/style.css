@@ -20,7 +20,7 @@ header {
     border: 1px solid grey;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px 0px 10px 19px;
+    margin: 10px 0px 10px 0px;
     background-color: aliceblue;
 }
 
@@ -65,10 +65,18 @@ input[type="number"] {
     text-align: center;
 }
 th {
-    padding: 4px;
-    width: 100px;
+    padding: 3px;
 }
 table td img {
     width: 25px;
     padding: 1px;
+}
+#tabela1 {
+    margin-top: 30PX ;
+}
+
+.teste01 {
+    width: 100px;
+    height: 100px;
+    background-color: black;
 }
